@@ -32,7 +32,7 @@ export default function Header({ themeMode, showNotification }: Props) {
         <div
           className="flex flex-row items-center gap-2 shadow-sm"
           onClick={() => {
-            handleNavigation("/profile");
+            handleNavigation("/digitalBanking/profile");
           }}
         >
           <Avatar icon={<FontAwesomeIcon icon={faUser} />} />

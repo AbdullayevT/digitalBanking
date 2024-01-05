@@ -22,8 +22,8 @@ export default function Home({}: Props) {
   const { areaData, marketData } = useAppSelector((state) => state.home);
   const {themeMode} = useAppSelector(state => state.main)
   useEffect(() => {
-    dispatch(getAllAreaData());
-    dispatch(getAllMarketData());
+    // dispatch(getAllAreaData());
+    // dispatch(getAllMarketData());
   }, []);
   return (
     <div className="h-full w-full">

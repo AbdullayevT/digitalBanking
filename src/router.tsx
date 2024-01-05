@@ -14,27 +14,27 @@ interface RouteTypes {
 
 const routes: RouteTypes[] = [
   {
-    path: "/",
+    path: "/digitalBanking/",
     element: <Dashboard />,
     roles: ["admin", "user"],
     children: [
       {
-        path: "/home",
+        path: "/digitalBanking/home",
         roles: ["admin", "user"],
         element: <Home />,
       },
       {
-        path: "/transaction",
+        path: "/digitalBanking/transaction",
         roles: ["admin", "user"],
         element: <Transactions />,
       },
       {
-        path: "/wallet",
+        path: "/digitalBanking/wallet",
         roles: ["admin", "user"],
         element: <Wallet />,
       },
       {
-        path: "/profile",
+        path: "/digitalBanking/profile",
         roles: ["admin", "user"],
         element: <Profile />,
       },
