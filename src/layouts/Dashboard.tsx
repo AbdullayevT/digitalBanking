@@ -21,9 +21,8 @@ export default function Dashboard({}: Props) {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const { themeMode, showNotification } = useAppSelector((state) => state.main);
-  console.log(pathname);
   useEffect(() => {
-    pathname === "/digitalBanking" && navigate("/digitalBanking/home");
+    pathname === "/digitalBanking/" && navigate("/digitalBanking/home");
   }, []);
 
   return (
