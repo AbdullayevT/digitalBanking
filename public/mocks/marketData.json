@@ -1,0 +1,58 @@
+[
+  {
+    "title": "BTCUSDT",
+    "description": "Bitcoin",
+    "currentPrice": 23.495,
+    "difference": 23.4,
+    "differencePosition": "Up"
+  },
+  {
+    "title": "AUSUDT",
+    "description": "Axie Infini",
+    "currentPrice": 15.95,
+    "difference": 8.9,
+    "differencePosition": "Down"
+  },
+  {
+    "title": "ETHUSDT",
+    "description": "Ethereum",
+    "currentPrice": 12.95,
+    "difference": 1.5,
+    "differencePosition": "Up"
+  },
+  {
+    "title": "SOLUSDT",
+    "description": "Solana",
+    "currentPrice": 15.95,
+    "difference": 4.5,
+    "differencePosition": "Down"
+  },
+  {
+    "title": "BNBUSD",
+    "description": "Binance",
+    "currentPrice": 15.95,
+    "difference": 8.9,
+    "differencePosition": "Up"
+  },
+  {
+    "title": "ADAUSFT",
+    "description": "Cardano",
+    "currentPrice": 15.95,
+    "difference": 12.2,
+    "differencePosition": "Down"
+  },
+  {
+    "title": "ETHUSDT",
+    "description": "Ethereum",
+    "currentPrice": 12.95,
+    "difference": 1.5,
+    "differencePosition": "Up"
+  },
+  {
+    "title": "BNBUSD",
+    "description": "Binance",
+    "currentPrice": 15.95,
+    "difference": 8.9,
+    "differencePosition": "Up"
+  }
+]

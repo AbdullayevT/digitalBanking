@@ -1,0 +1,78 @@
+$priceBgUpDark: #2a4037;
+$priceBgDownDark: #490517;
+$priceBgUpLight: #e8ffeb;
+$priceBgDownLight: #ffecef;
+$priceTextUpLight: #27aa80;
+$priceTextDownLight: #e01b2a;
+$priceTextUpDark: #0dd9a0;
+$priceTextDownDark: #fa9797;
+
+.total-balance {
+  @apply font-bold text-lg mr-8;
+}
+
+.additional-line-content {
+  @apply grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 items-center justify-center;
+}
+
+.market-button {
+  @apply w-fit py-2 px-4 rounded-md cursor-pointer;
+}
+
+.price-container.price-up {
+  background-color: $priceBgUpLight !important;
+  color: $priceTextUpLight;
+}
+
+.price-container.price-down {
+  background-color: $priceBgDownLight !important;
+  color: $priceTextDownLight;
+}
+
+.price-container.price-up.dark {
+  background-color: $priceBgUpDark !important;
+  color: $priceTextUpDark;
+}
+
+.price-container.price-down.dark {
+  background-color: $priceBgDownDark !important;
+  color: $priceTextDownDark;
+}
+
+.small-card {
+  @apply p-1 rounded-xl justify-self-center;
+}
+
+.price-small-card-container {
+  background-color: $priceBgUpLight !important;
+  color: $priceTextUpLight;
+}
+
+.price-small-card-container.dark {
+  background-color: $priceBgUpDark !important;
+  color: $priceTextUpDark;
+}
+
+.single-price-up {
+  color: $priceTextUpLight;
+}
+
+.single-price-up.dark {
+  color: $priceTextUpDark;
+}
+
+.single-price-down {
+  color: $priceTextDownLight;
+}
+
+.single-price-down.dark {
+  color: $priceTextDownDark;
+}
+
+.pnl-daily{
+    @apply text-[#616161]
+}
+
+.pnl-daily.dark{
+    @apply text-white
+}
