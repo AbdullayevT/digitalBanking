@@ -1,6 +1,4 @@
 import Container from "@/components/Home/Container";
-import { getAllAreaData, getAllMarketData } from "@/features/home";
-import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   AreaChart,
@@ -13,18 +11,13 @@ import { faCaretUp } from "@fortawesome/free-solid-svg-icons/faCaretUp";
 import { faEthereum } from "@fortawesome/free-brands-svg-icons/faEthereum";
 import { faBtc } from "@fortawesome/free-brands-svg-icons/faBtc";
 import BaseLineChart from "@/components/Charts/BaseLineChart";
-import { useAppDispatch, useAppSelector } from "@/hooks/hooks";
+import { useAppSelector } from "@/hooks/hooks";
 
 type Props = {};
 
 export default function Home({}: Props) {
-  const dispatch = useAppDispatch();
   const { areaData, marketData } = useAppSelector((state) => state.home);
   const {themeMode} = useAppSelector(state => state.main)
-  useEffect(() => {
-    // dispatch(getAllAreaData());
-    // dispatch(getAllMarketData());
-  }, []);
   return (
     <div className="h-full w-full">
       <div className="grid grid-cols-2 gap-4 w-full">
