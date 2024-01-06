@@ -44,7 +44,7 @@ export default function Home({}: Props) {
     <div className="h-full w-full">
       <div
         className={`grid grid-cols-2 ${
-          isMobile() && "grid-cols-1"
+          isMobile() && "!grid-cols-1"
         } gap-4 w-full`}
       >
         <div className="w-full">
@@ -91,7 +91,7 @@ export default function Home({}: Props) {
           </Container>
         </div>
         <div
-          className={`grid grid-cols-2 ${isMobile() && "grid-cols-1"} gap-4`}
+          className={`grid grid-cols-2 ${isMobile() && "!grid-cols-1"} gap-4`}
         >
           <div className="w-full">
             <Container
@@ -258,7 +258,7 @@ export default function Home({}: Props) {
                   themeMode={themeMode}
                 />
               </div>
-              <div className="additional-line-content">
+              <div className={`additional-line-content ${isMobile() && "mobile"}`}>
                 <div
                   className={`whitespace-nowrap pnl-daily ${
                     !themeMode && "dark"

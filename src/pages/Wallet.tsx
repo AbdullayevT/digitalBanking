@@ -117,7 +117,7 @@ export default function Wallet({}: Props) {
   ];
   return (
     <div className="h-full w-full flex flex-col gap-6">
-      <div className={`grid grid-cols-3 ${isMobile() && "grid-cols-1"} gap-6`}>
+      <div className={`grid grid-cols-3 ${isMobile() && "!grid-cols-1"} gap-6`}>
         <div
           className={`${
             themeMode ? "bg-white" : "bg-black"
@@ -238,7 +238,7 @@ export default function Wallet({}: Props) {
           </div>
         </div>
       </div>
-      <div className={`grid grid-cols-3 ${isMobile() && "grid-cols-1"} gap-6`}>
+      <div className={`grid grid-cols-3 ${isMobile() && "!grid-cols-1"} gap-6`}>
         <div className="col-span-1">
           <div
             className={`w-full ${
