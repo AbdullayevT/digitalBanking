@@ -10,12 +10,14 @@ import { isMobile } from "@/utils/devices";
 import { Dropdown } from "antd";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-interface Props {
+type Props = {};
+
+interface MarketButtonTypes {
   buttonTitle: string;
   themeMode: boolean;
-};
+}
 
-const MarketButton = ({ buttonTitle, themeMode }: Props) => {
+const MarketButton = ({ buttonTitle, themeMode }: MarketButtonTypes) => {
   if (buttonTitle === "All") {
     return (
       <div className="bg-[#f2f8ff] text-[#0261ff] market-button">
@@ -112,7 +114,9 @@ export default function Home({}: Props) {
                   themeMode={themeMode}
                 />
               </div>
-              <div className={`additional-line-content ${isMobile() && "mobile"}`}>
+              <div
+                className={`additional-line-content ${isMobile() && "mobile"}`}
+              >
                 <div
                   className={`whitespace-nowrap pnl-daily ${
                     !themeMode && "dark"
@@ -158,7 +162,9 @@ export default function Home({}: Props) {
                   themeMode={themeMode}
                 />
               </div>
-              <div className={`additional-line-content ${isMobile() && "mobile"}`}>
+              <div
+                className={`additional-line-content ${isMobile() && "mobile"}`}
+              >
                 <div
                   className={`whitespace-nowrap pnl-daily ${
                     !themeMode && "dark"
@@ -204,7 +210,9 @@ export default function Home({}: Props) {
                   themeMode={themeMode}
                 />
               </div>
-              <div className={`additional-line-content ${isMobile() && "mobile"}`}>
+              <div
+                className={`additional-line-content ${isMobile() && "mobile"}`}
+              >
                 <div
                   className={`whitespace-nowrap pnl-daily ${
                     !themeMode && "dark"
