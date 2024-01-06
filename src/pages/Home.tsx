@@ -1,28 +1,58 @@
 import Container from "@/components/Home/Container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  AreaChart,
-  Area,
-  XAxis,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts";
+import { AreaChart, Area, XAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { faCaretUp } from "@fortawesome/free-solid-svg-icons/faCaretUp";
 import { faEthereum } from "@fortawesome/free-brands-svg-icons/faEthereum";
 import { faBtc } from "@fortawesome/free-brands-svg-icons/faBtc";
 import BaseLineChart from "@/components/Charts/BaseLineChart";
 import { useAppSelector } from "@/hooks/hooks";
+import { isMobile } from "@/utils/devices";
+import { Dropdown } from "antd";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-type Props = {};
+type Props = {
+  buttonTitle: string;
+  themeMode: boolean;
+};
+
+const MarketButton = ({ buttonTitle, themeMode }: Props) => {
+  if (buttonTitle === "All") {
+    return (
+      <div className="bg-[#f2f8ff] text-[#0261ff] market-button">
+        {buttonTitle}
+      </div>
+    );
+  } else {
+    return (
+      <div
+        className={`bg-[#f8f8f9] ${
+          !themeMode && "text-gray-600 bg-[#757575]"
+        } market-button`}
+      >
+        {buttonTitle}
+      </div>
+    );
+  }
+};
 
 export default function Home({}: Props) {
   const { areaData, marketData } = useAppSelector((state) => state.home);
-  const {themeMode} = useAppSelector(state => state.main)
+  const { themeMode } = useAppSelector((state) => state.main);
   return (
     <div className="h-full w-full">
-      <div className="grid grid-cols-2 gap-4 w-full">
+      <div
+        className={`grid grid-cols-2 ${
+          isMobile() && "grid-cols-1"
+        } gap-4 w-full`}
+      >
         <div className="w-full">
-          <Container title="Assets" showIcon={false} icon="" bgColor="" themeMode={themeMode}>
+          <Container
+            title="Assets"
+            showIcon={false}
+            icon=""
+            bgColor=""
+            themeMode={themeMode}
+          >
             <div className="flex flex-col gap-2">
               <div className="font-light text-sm">Your total balance</div>
               <div className="flex flex-row gap-2 items-center">
@@ -37,7 +67,9 @@ export default function Home({}: Props) {
             </div>
             <ResponsiveContainer width="100%" height={400} key={Math.random()}>
               <AreaChart data={areaData}>
-                <Tooltip wrapperStyle={{color: themeMode ? "black" : "black"}} />
+                <Tooltip
+                  wrapperStyle={{ color: themeMode ? "black" : "black" }}
+                />
                 <XAxis dataKey="name" hide={true} />
                 <defs>
                   <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -56,7 +88,9 @@ export default function Home({}: Props) {
             </ResponsiveContainer>
           </Container>
         </div>
-        <div className="grid grid-cols-2 gap-4">
+        <div
+          className={`grid grid-cols-2 ${isMobile() && "grid-cols-1"} gap-4`}
+        >
           <div className="w-full">
             <Container
               title="ETHUSDT"
@@ -78,12 +112,26 @@ export default function Home({}: Props) {
                   themeMode={themeMode}
                 />
               </div>
-              <div className="additional-line-content">
-                <div className={`whitespace-nowrap pnl-daily ${!themeMode && "dark"}`}>
+              <div className={`additional-line-content ${isMobile() && "mobile"}`}>
+                <div
+                  className={`whitespace-nowrap pnl-daily ${
+                    !themeMode && "dark"
+                  }`}
+                >
                   PNL Daily
                 </div>
-                <div className={`single-price-up ${!themeMode && "dark"} font-bold`}>+$189,91</div>
-                <div className={`small-card price-small-card-container ${!themeMode && "dark"}`}>
+                <div
+                  className={`single-price-up ${
+                    !themeMode && "dark"
+                  } font-bold`}
+                >
+                  +$189,91
+                </div>
+                <div
+                  className={`small-card price-small-card-container ${
+                    !themeMode && "dark"
+                  }`}
+                >
                   +24.68%
                 </div>
               </div>
@@ -110,12 +158,26 @@ export default function Home({}: Props) {
                   themeMode={themeMode}
                 />
               </div>
-              <div className="additional-line-content">
-                <div className={`whitespace-nowrap pnl-daily ${!themeMode && "dark"}`}>
+              <div className={`additional-line-content ${isMobile() && "mobile"}`}>
+                <div
+                  className={`whitespace-nowrap pnl-daily ${
+                    !themeMode && "dark"
+                  }`}
+                >
                   PNL Daily
                 </div>
-                <div className={`single-price-up ${!themeMode && "dark"} font-bold`}>+$189,91</div>
-                <div className={`small-card price-small-card-container ${!themeMode && "dark"}`}>
+                <div
+                  className={`single-price-up ${
+                    !themeMode && "dark"
+                  } font-bold`}
+                >
+                  +$189,91
+                </div>
+                <div
+                  className={`small-card price-small-card-container ${
+                    !themeMode && "dark"
+                  }`}
+                >
                   +24.68%
                 </div>
               </div>
@@ -142,12 +204,26 @@ export default function Home({}: Props) {
                   themeMode={themeMode}
                 />
               </div>
-              <div className="additional-line-content">
-                <div className={`whitespace-nowrap pnl-daily ${!themeMode && "dark"}`}>
+              <div className={`additional-line-content ${isMobile() && "mobile"}`}>
+                <div
+                  className={`whitespace-nowrap pnl-daily ${
+                    !themeMode && "dark"
+                  }`}
+                >
                   PNL Daily
                 </div>
-                <div className={`single-price-down ${!themeMode && "dark"} font-bold`}>-$16.78</div>
-                <div className={`small-card price-small-card-container ${!themeMode && "dark"}`}>
+                <div
+                  className={`single-price-down ${
+                    !themeMode && "dark"
+                  } font-bold`}
+                >
+                  -$16.78
+                </div>
+                <div
+                  className={`small-card price-small-card-container ${
+                    !themeMode && "dark"
+                  }`}
+                >
                   +14.67%
                 </div>
               </div>
@@ -175,11 +251,25 @@ export default function Home({}: Props) {
                 />
               </div>
               <div className="additional-line-content">
-                <div className={`whitespace-nowrap pnl-daily ${!themeMode && "dark"}`}>
+                <div
+                  className={`whitespace-nowrap pnl-daily ${
+                    !themeMode && "dark"
+                  }`}
+                >
                   PNL Daily
                 </div>
-                <div className={`single-price-up ${!themeMode && "dark"} font-bold`}>+$189,91</div>
-                <div className={`small-card price-small-card-container ${!themeMode && "dark"}`}>
+                <div
+                  className={`single-price-up ${
+                    !themeMode && "dark"
+                  } font-bold`}
+                >
+                  +$189,91
+                </div>
+                <div
+                  className={`small-card price-small-card-container ${
+                    !themeMode && "dark"
+                  }`}
+                >
                   +24.68%
                 </div>
               </div>
@@ -187,26 +277,73 @@ export default function Home({}: Props) {
           </div>
         </div>
       </div>
-      <div className={`${themeMode ? "bg-white" : "bg-black text-white"} p-4 pt-6 rounded-md mt-4`}>
+      <div
+        className={`${
+          themeMode ? "bg-white" : "bg-black text-white"
+        } p-4 pt-6 rounded-md mt-4`}
+      >
         <div className="grid grid-cols-2 items-center">
           <div className="font-bold">Markets</div>
-          <div className="grid grid-cols-3">
-            <div className="bg-[#f2f8ff] text-[#0261ff] market-button">All</div>
-            <div className={`bg-[#f8f8f9] ${!themeMode && "text-white bg-[#757575]" } market-button`}>Meta</div>
-            <div className={`bg-[#f8f8f9] ${!themeMode && "text-white bg-[#757575]" } market-button`}>Gaming</div>
-          </div>
+          {!isMobile() && (
+            <div className="grid grid-cols-3">
+              <MarketButton buttonTitle="All" themeMode={themeMode} />
+              <MarketButton buttonTitle="Meta" themeMode={themeMode} />
+              <MarketButton buttonTitle="Gaming" themeMode={themeMode} />
+            </div>
+          )}
+          {isMobile() && (
+            <Dropdown
+              className="place-self-end"
+              menu={{
+                items: [
+                  {
+                    key: "1",
+                    label: (
+                      <MarketButton buttonTitle="All" themeMode={themeMode} />
+                    ),
+                  },
+                  {
+                    key: "2",
+                    label: (
+                      <MarketButton buttonTitle="Meta" themeMode={themeMode} />
+                    ),
+                  },
+                  {
+                    key: "3",
+                    label: (
+                      <MarketButton
+                        buttonTitle="Gaming"
+                        themeMode={themeMode}
+                      />
+                    ),
+                  },
+                ],
+              }}
+            >
+              <FontAwesomeIcon icon={faBars} />
+            </Dropdown>
+          )}
         </div>
-        <div className="space-y-2">
+        <div className={`${isMobile() ? "space-y-4" : "space-y-2"}`}>
           {marketData.map((item, i) => {
             return (
-              <div key={i} className="grid grid-cols-3 mt-3 items-center">
+              <div
+                key={i}
+                className={`grid grid-cols-3 ${
+                  isMobile() && "!grid-cols-2 gap-2"
+                } mt-3 items-center`}
+              >
                 <div className="flex flex-row gap-4">
                   <div className="font-semibold">{item.title}</div>
                   <div className="text-sm text-[#757575] font-normal">
                     {item.description}
                   </div>
                 </div>
-                <div className="font-semibold">${item.currentPrice}</div>
+                <div
+                  className={`font-semibold ${isMobile() && "place-self-end"}`}
+                >
+                  ${item.currentPrice}
+                </div>
                 <div
                   className={`font-semibold w-fit py-1 px-2 gap-1 items-center flex rounded-lg price-container ${
                     item.differencePosition === "Up"

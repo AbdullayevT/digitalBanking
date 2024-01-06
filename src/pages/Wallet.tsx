@@ -13,7 +13,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { Divider, Tooltip } from "antd";
+import { Divider, Dropdown, Tooltip } from "antd";
 import { faCircleDown } from "@fortawesome/free-regular-svg-icons/faCircleDown";
 import { faPaperPlane } from "@fortawesome/free-regular-svg-icons/faPaperPlane";
 import { faMoneyBillTransfer } from "@fortawesome/free-solid-svg-icons/faMoneyBillTransfer";
@@ -23,6 +23,8 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons/faCartShopping
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons/faEllipsis";
 import { faGear } from "@fortawesome/free-solid-svg-icons/faGear";
 import CreditCardMaster from "@/components/Wallet/CreditCardMaster";
+import { isMobile } from "@/utils/devices";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 type Props = {};
 
@@ -115,11 +117,11 @@ export default function Wallet({}: Props) {
   ];
   return (
     <div className="h-full w-full flex flex-col gap-6">
-      <div className="grid grid-cols-3 gap-6">
+      <div className={`grid grid-cols-3 ${isMobile() && "grid-cols-1"} gap-6`}>
         <div
           className={`${
             themeMode ? "bg-white" : "bg-black"
-          } col-span-1 py-4 pl-4 rounded-xl`}
+          } col-span-1 py-4 pl-4 rounded-xl w-full`}
         >
           <div className="text-[#8f8f8f] text-base">Total balance</div>
           <div className="flex flex-row flex-wrap gap-2 items-center mt-2 relative">
@@ -171,9 +173,9 @@ export default function Wallet({}: Props) {
           </div>
         </div>
         <div
-          className={`${
-            themeMode ? "bg-white" : "bg-black"
-          } col-span-2 py-4 pl-4 rounded-xl`}
+          className={`${themeMode ? "bg-white" : "bg-black"} ${
+            !isMobile() && "col-span-2"
+          } py-4 pl-4 rounded-xl`}
         >
           <div
             className={`font-semibold text-xl ${
@@ -182,7 +184,7 @@ export default function Wallet({}: Props) {
           >
             Markets
           </div>
-          <div className="grid grid-cols-7 mt-4 gap-2 md:grid-cols-5 2xl:grid-cols-7 sm:grid-cols-3">
+          <div className="grid grid-cols-3 mt-4 gap-2 md:grid-cols-5 2xl:grid-cols-7 sm:grid-cols-3">
             {[
               {
                 title: "Deposit",
@@ -236,7 +238,7 @@ export default function Wallet({}: Props) {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-6">
+      <div className={`grid grid-cols-3 ${isMobile() && "grid-cols-1"} gap-6`}>
         <div className="col-span-1">
           <div
             className={`w-full ${
@@ -259,7 +261,7 @@ export default function Wallet({}: Props) {
             </div>
           </div>
         </div>
-        <div className="col-span-2">
+        <div className={`${!isMobile() && "col-span-2"}`}>
           <div className="grid grid-rows-5 gap-6 h-full">
             <div
               className={`${
@@ -267,9 +269,9 @@ export default function Wallet({}: Props) {
               } py-4 px-4 rounded-xl flex flex-row w-full row-span-1 items-center`}
             >
               <div
-                className={`flex flex-row gap-3 w-[150px] items-center ${
-                  themeMode ? "text-black" : "text-white"
-                }`}
+                className={`flex flex-row gap-3 ${
+                  isMobile() ? "!w-auto" : "w-[150px]"
+                } items-center ${themeMode ? "text-black" : "text-white"}`}
               >
                 <div className="flex flex-col items-start">
                   Last <span>30 days</span>
@@ -277,7 +279,7 @@ export default function Wallet({}: Props) {
                 <FontAwesomeIcon icon={faCaretDown} />
                 <Divider type="vertical" className="h-[50px]" />
               </div>
-              <div className="flex flex-row justify-between px-5 w-full items-center">
+              <div className="flex flex-col  px-5 w-full ">
                 {[
                   {
                     title: "Transactions",
@@ -321,23 +323,68 @@ export default function Wallet({}: Props) {
                   >
                     Statistics
                   </span>
-                  <div className="bg-[#f2f8ff] text-[#0261ff] market-button">
-                    All
-                  </div>
-                  <div
-                    className={`bg-[#f8f8f9] ${
-                      !themeMode && "text-white bg-[#757575]"
-                    } market-button`}
-                  >
-                    Money in
-                  </div>
-                  <div
-                    className={`bg-[#f8f8f9] ${
-                      !themeMode && "text-white bg-[#757575]"
-                    } market-button`}
-                  >
-                    Money out
-                  </div>
+                  {isMobile() ? (
+                    <Dropdown
+                      menu={{
+                        items: [
+                          {
+                            key: "1",
+                            label: (
+                              <div className="bg-[#f2f8ff] text-[#0261ff] market-button">
+                                All
+                              </div>
+                            ),
+                          },
+                          {
+                            key: "2",
+                            label: (
+                              <div
+                                className={`bg-[#f8f8f9] ${
+                                  !themeMode && "text-gray-600 bg-[#757575]"
+                                } market-button`}
+                              >
+                                Money in
+                              </div>
+                            ),
+                          },
+                          {
+                            key: "3",
+                            label: (
+                              <div
+                                className={`bg-[#f8f8f9] ${
+                                  !themeMode && "text-gray-600 bg-[#757575]"
+                                } market-button`}
+                              >
+                                Money out
+                              </div>
+                            ),
+                          },
+                        ],
+                      }}
+                    >
+                      <FontAwesomeIcon icon={faBars} color={themeMode ? "black" : "white"} />
+                    </Dropdown>
+                  ) : (
+                    <div>
+                      <div className="bg-[#f2f8ff] text-[#0261ff] market-button">
+                        All
+                      </div>
+                      <div
+                        className={`bg-[#f8f8f9] ${
+                          !themeMode && "text-gray-600 bg-[#757575]"
+                        } market-button`}
+                      >
+                        Money in
+                      </div>
+                      <div
+                        className={`bg-[#f8f8f9] ${
+                          !themeMode && "!text-gray-600 bg-[#757575]"
+                        } market-button`}
+                      >
+                        Money out
+                      </div>
+                    </div>
+                  )}
                 </div>
                 <div className="bg-[#f8f8f9] market-button flex gap-2">
                   <span className="font-bold">This week</span>

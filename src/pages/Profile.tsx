@@ -9,6 +9,7 @@ import { faHeadset } from "@fortawesome/free-solid-svg-icons/faHeadset";
 import { faLock } from "@fortawesome/free-solid-svg-icons/faLock";
 import { useAppDispatch, useAppSelector } from "@/hooks/hooks";
 import { setShowNotification, setThemeMode } from "@/features/main";
+import { isMobile } from "@/utils/devices";
 
 type Props = {};
 
@@ -32,9 +33,9 @@ const PanelContainer = ({
 }: PanelContainerTypes) => {
   return (
     <div
-      className={`w-[670px] ${height} ${
+      className={`${isMobile() ? "w-full" : "w-[670px]"} ${height} ${
         themeMode ? "bg-white" : "bg-black"
-      } mt-5 p-4 flex flex-col justify-center space-y-4`}
+      } mt-5 p-4 flex flex-col justify-center space-y-4 rounded-xl`}
     >
       {children}
     </div>
@@ -74,7 +75,7 @@ export default function Profile({}: Props) {
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
       <div
-        className={`w-[670px] h-[170px] ${
+        className={`${isMobile() ? "w-full mt-10" : "w-[670px]"} h-[170px] ${
           themeMode ? "bg-white" : "bg-black text-white"
         } rounded-xl relative`}
       >
@@ -83,9 +84,14 @@ export default function Profile({}: Props) {
         </div>
         <div className="image-container top-[60%] flex flex-col items-center justify-center whitespace-nowrap gap-2">
           <div className="font-semibold">Tapdig Abdullayev</div>
-          <div className="flex flex-row gap-2 font-medium">
+          <div
+            className={`flex flex-row ${
+              isMobile() && "flex-wrap justify-center"
+            } gap-2 font-medium`}
+          >
             <div>abdullayevtapdiq2@gmail.com</div>
-            <div>|</div>
+            {!isMobile() && <div>|</div>}
+
             <div>+994 12312323</div>
           </div>
         </div>

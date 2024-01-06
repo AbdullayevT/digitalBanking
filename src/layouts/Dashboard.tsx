@@ -6,6 +6,8 @@ import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import { useEffect } from "react";
 import { useAppSelector } from "@/hooks/hooks";
+import { isMobile } from "@/utils/devices";
+import Footer from "@/components/Footer";
 
 export const loading = (
   <div className="h-screen flex justify-center items-center">
@@ -28,15 +30,28 @@ export default function Dashboard({}: Props) {
   return (
     <Suspense fallback={loading}>
       <ProtectedRoute>
-        <div className={`flex flex-row h-full ${themeMode ? "bg-[#f3f8ff]" : "bg-[#202020]"}  text-black`}>
-          <div>
-            <Sidebar themeMode={themeMode} />
-          </div>
+        <div
+          className={`flex flex-row h-full ${
+            themeMode ? "bg-[#f3f8ff]" : "bg-[#202020]"
+          }  text-black`}
+        >
+          {!isMobile() && (
+            <div>
+              <Sidebar themeMode={themeMode} />
+            </div>
+          )}
           <div className="h-full w-full overflow-auto">
             <Header themeMode={themeMode} showNotification={showNotification} />
-            <div className="w-full flex-1 h-[calc(100vh_-_5rem)] overflow-auto p-7 custom-scroll">
+            <div
+              className={`w-full flex-1 ${
+                isMobile()
+                  ? "h-[calc(100vh_-_10rem)]"
+                  : "h-[calc(100vh_-_3rem)]"
+              } overflow-auto p-7 custom-scroll`}
+            >
               <Outlet />
             </div>
+            {isMobile() && <Footer themeMode={themeMode} />}
           </div>
         </div>
       </ProtectedRoute>

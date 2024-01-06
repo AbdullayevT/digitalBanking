@@ -12,6 +12,8 @@ import { faLightbulb } from "@fortawesome/free-solid-svg-icons/faLightbulb";
 import { faMoon } from "@fortawesome/free-solid-svg-icons/faMoon";
 import { useAppDispatch } from "@/hooks/hooks";
 import { setThemeMode } from "@/features/main";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { isMobile } from "@/utils/devices";
 
 type Props = {
   themeMode: boolean;
@@ -126,8 +128,12 @@ export default function Header({ themeMode, showNotification }: Props) {
             } p-2 rounded-full cursor-pointer`}
           >
             <Avatar icon={<FontAwesomeIcon icon={faUser} />} />
-            <span>Tapdig Abdullayev</span>
-            <FontAwesomeIcon icon={faCaretDown} />
+            {!isMobile() && (
+              <div>
+                <span>Tapdig Abdullayev</span>
+                <FontAwesomeIcon icon={faCaretDown} />
+              </div>
+            )}
           </div>
         </Dropdown>
       </div>
