@@ -10,7 +10,7 @@ import { isMobile } from "@/utils/devices";
 import { Dropdown } from "antd";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-type Props = {
+interface Props {
   buttonTitle: string;
   themeMode: boolean;
 };

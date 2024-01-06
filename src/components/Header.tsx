@@ -12,7 +12,6 @@ import { faLightbulb } from "@fortawesome/free-solid-svg-icons/faLightbulb";
 import { faMoon } from "@fortawesome/free-solid-svg-icons/faMoon";
 import { useAppDispatch } from "@/hooks/hooks";
 import { setThemeMode } from "@/features/main";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { isMobile } from "@/utils/devices";
 
 type Props = {
