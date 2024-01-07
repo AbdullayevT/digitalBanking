@@ -46,7 +46,7 @@ export default function Dashboard({}: Props) {
               className={`w-full flex-1 ${
                 isMobile()
                   ? "h-[calc(100vh_-_10rem)]"
-                  : "h-[calc(100vh_-_3rem)]"
+                  : "h-[calc(100vh_-_5rem)]"
               } overflow-auto p-7 custom-scroll`}
             >
               <Outlet />
